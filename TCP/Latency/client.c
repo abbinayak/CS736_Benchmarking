@@ -65,8 +65,6 @@ int main(int argc, char *argv[]) {
     // Timed send-receive loop
       double times_send,times_recv;
       double min_time=10000000;
-      double min_send=10000000;
-      double min_recv=10000000;
       
     for (size_t i = 0; i < N_ROUNDS; i++) {
 
@@ -86,12 +84,8 @@ int main(int argc, char *argv[]) {
     }
     close(sockfd);
     printf("Done!\nSummary: (time_send,\ttime_recv)");
- //   for (size_t i = 0; i < N_ROUNDS; i++) {
-   //     printf("(%" PRIu64 ",\t%" PRIu64 ")\n", times_send[i], times_recv[i]);
-   // }
     printf("Minimum cycles: ");
     printf("%f\n", min_time);
-//    printf("(%" PRIu64 ",\t%" PRIu64 ")\n", min_send, min_recv);
     printf("Min time : %f\n", (min_time/3.2)/2);
     free(rbuffer);
     free(wbuffer);
