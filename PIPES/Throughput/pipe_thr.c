@@ -29,7 +29,6 @@ int main(int argc, char *argv[]) {
    double times_send;
    int size;
   int64_t count, i;
-  //uint64_t tsend, tend;
   double delta;
   char buff[MAX];
 #ifdef HAS_CLOCK_GETTIME_MONOTONIC
@@ -44,8 +43,6 @@ int main(int argc, char *argv[]) {
   }
 
   size = atoi(argv[1]);
-  //count = atol(argv[2]);
-
   buf = malloc(size);
   if (buf == NULL) {
     perror("malloc");
@@ -67,7 +64,6 @@ int main(int argc, char *argv[]) {
 
   if (!fork()) {
     /* child */
-//   tsend = rdtsc();
     for (i = 0; i < count; i++) {
       if (read(ifds[0], buf, size) != size) {
         perror("read");
@@ -79,12 +75,6 @@ int main(int argc, char *argv[]) {
         perror("write");
         return 1;
       }
-    
-  
-//  uint64_t tend = rdtsc();
- // times_send= tend - tsend;
-  // printf("Times : %f",times_send);
-  // printf("throughput: %f Mb/s\n",(size/(times_send/3.2)*1000));
   }
   else {
 /* parent */
@@ -94,17 +84,9 @@ int main(int argc, char *argv[]) {
       perror("clock_gettime");
       return 1;
     }
-/*    
-#else
-    if (gettimeofday(&start, NULL) == -1) {
-      perror("gettimeofday");
-      return 1;
-    }
-  */  
 #endif
 
 	 uint64_t tsend = rdtsc();
-	 // count = DATA/size;
     for (i = 0; i < count; i++) {
       if (write(ifds[1], buf, size) != size) {
         perror("write");
@@ -128,16 +110,12 @@ _MONOTONIC
 
     delta = ((stop.tv_sec - start.tv_sec) * 1000000000 +
              (stop.tv_nsec - start.tv_nsec));
-    //printf("Delta:%lf",delta);
 
 #endif
 
     times_send= tend - tsend;
     printf("Times : %f",times_send);
-    // printf("throughput: %li msg/s\n", (count * 1000000) / delta);
-    //       (((count * 1000000) / times_send) * size * 8) / 1;
     printf("throughput: %f Mb/s\n",(size/(times_send/3.2)*10000));
-   // printf("throughput: %f Mb/s\n",(size/delta)*1000);
 }
   return 0;
 }
