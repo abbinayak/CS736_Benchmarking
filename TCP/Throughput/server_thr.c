@@ -61,24 +61,15 @@ int main(int argc, char *argv[])
     int i;
     int rounds = DATA/config.n_bytes;
     for (i = 0; i < rounds; i++) {
-//        printf("%d",i);
 	    receive_message(config.n_bytes, newsockfd, buffer);
- //       send_message(config.n_bytes, newsockfd, buffer);
     }
     
     if(i==rounds)
     {
 	    strcpy(buff,"Acknowledge message");
-	    /*
-	      while ((buff[n++] = getchar()) != '\n')
-            ;
-    
-*/
         // and send that buffer to client
- //       write(sockfd, buff, sizeof(buff));
  	 write(newsockfd, buff, sizeof(buff));
 } 
-	//    send_message(buff, newsockfd, buffer);}
     printf("Done!\n");
 
     // Clean state
