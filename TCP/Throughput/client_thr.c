@@ -67,27 +67,14 @@ int main(int argc, char *argv[]) {
       double times_recv,tstart,tsend,tend,min_time;
       double num = 3.2,num2=1000;
       char buff[MAX];
-   //   double data = 1000000000;
      int rounds = DATA/config.n_bytes; 
     for (size_t i = 0; i < rounds; i++) {
-        //printf("%ld",i);
         tstart = rdtscp();
 
         send_message(config.n_bytes, sockfd, wbuffer);
         tsend = rdtsc();
-      /*  receive_message(config.n_bytes, sockfd, rbuffer);
-
-        uint64_t tend = rdtsc();
-	
-	times_send[i] = tsend - tstart;
-        times_recv[i] = tend - tsend;
-
-	if(times_send[i]+times_recv[i]<min_time){ min_time =times_send[i]+times_recv[i];
-    	min_send = times_send[i];
-	min_recv = times_recv[i];}
-   */ }
+ }
   read(sockfd, buff, sizeof(buff));   
-//	receive_message(buff, sockfd, rbuffer);
 	tend = rdtsc();
 
         times_send = tsend - tstart;
@@ -95,9 +82,6 @@ int main(int argc, char *argv[]) {
 	min_time = times_send + times_recv;
     close(sockfd);
     printf("Done!\nSummary: (time_send,\ttime_recv)");
- //   for (size_t i = 0; i < N_ROUNDS; i++) {
-   //     printf("(%" PRIu64 ",\t%" PRIu64 ")\n", times_send[i], times_recv[i]);
-   // }
     printf("Minimum cycles:\n");
     printf("%f\n", min_time);
     printf("Min time:\n");
