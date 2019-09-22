@@ -1,3 +1,0 @@
-gcc benchmarking_clockgettime.c -o benchmarking_clockgettime
-gcc benchmarking_clockgettime_getpid.c -o benchmarking_clockgettime_getpid
-gcc benchmarking_clockgettime_getuid.c -o benchmarking_clockgettime_getuid
