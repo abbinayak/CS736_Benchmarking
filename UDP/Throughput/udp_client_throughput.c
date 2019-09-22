@@ -16,8 +16,6 @@
 
 #include "connection.h" 
   
-//#define PORT     8080 
-//#define MAXLINE 1024 
 #define MAX 80
 void error(char *msg)
 {
@@ -55,7 +53,6 @@ int main(int argc, char *argv[]) {
     // Filling server information 
     servaddr.sin_family = AF_INET; 
     servaddr.sin_port = htons(config.port); 
-    //servaddr.sin_addr.s_addr = INADDR_ANY; 
     bcopy((char *)server->h_addr, 
          (char *)&servaddr.sin_addr.s_addr,
          server->h_length);
@@ -67,7 +64,6 @@ int main(int argc, char *argv[]) {
       double times_recv,tstart,tsend,tend,min_time;
       double num = 3.2,num2=1000;
       char buff[MAX];
-     // double data_block = 1000000000; 
       int no_of_rounds = DATA_BLOCK/config.n_bytes;
       for (size_t i = 0; i < no_of_rounds; i++) {
 	//printf("%ld",i);
@@ -79,19 +75,7 @@ int main(int argc, char *argv[]) {
  	tsend = rdtsc();
 
     //printf("Hello message sent.\n");
-   /*       uint64_t tsend = rdtsc();
-
-    n = recvfrom(sockfd, buffer, config.n_bytes,  
-                0, (struct sockaddr *) &servaddr, 
-                &len); 
-     uint64_t tend = rdtsc();
-    times_send[i] = tsend - tstart;
-        times_recv[i] = tend - tsend;
-
-	if(times_send[i]+times_recv[i]<min_time){ min_time =times_send[i]+times_recv[i];
-    	min_send = times_send[i];
-	min_recv = times_recv[i];}
-    */}
+ }
     read(sockfd, buff, sizeof(buff)); 
     tend = rdtsc();
     
@@ -109,8 +93,6 @@ int main(int argc, char *argv[]) {
  printf("%f\n", (min_time/num));
 printf("Min time:\n");
  printf("%f Mb/s\n", (config.n_bytes/(min_time/num))*num2); 
-//    free(times_send);
- //   free(times_recv);
     free(buffer);
     return 0; 
 } 
