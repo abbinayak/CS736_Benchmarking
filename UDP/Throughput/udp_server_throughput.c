@@ -13,8 +13,6 @@
 
 #include "connection.h"
   
-//#define PORT     8080 
-//#define MAXLINE 1024 
 #define MAX 80
  void error(char *msg)
 {
@@ -57,7 +55,6 @@ int main(int argc, char *argv[]) {
       
     int len, n, i;
    char buff[MAX]; 
-    //double data_block = 1000000000;
       int no_of_rounds = DATA_BLOCK/config.n_bytes;
     for (i = 0; i < no_of_rounds; i++) {
 	   printf("%d",i);
