@@ -16,7 +16,7 @@
 
 #include "connection.h" 
   
-//#define PORT     8080 
+//#define PORT 8080 
 //#define MAXLINE 1024 
   
 // Driver code 
@@ -49,7 +49,6 @@ int main(int argc, char *argv[]) {
     // Filling server information 
     servaddr.sin_family = AF_INET; 
     servaddr.sin_port = htons(config.port); 
-    //servaddr.sin_addr.s_addr = INADDR_ANY; 
     bcopy((char *)server->h_addr, 
          (char *)&servaddr.sin_addr.s_addr,
          server->h_length);
