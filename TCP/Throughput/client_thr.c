@@ -20,77 +20,77 @@
 
 void error(char *msg)
 {
-    perror(msg);
-    exit(0);
+	perror(msg);
+	exit(0);
 }
 
 int main(int argc, char *argv[]) {
-    int sockfd;
-    struct sockaddr_in serv_addr;
-    struct hostent *server;
+	int sockfd;
+	struct sockaddr_in serv_addr;
+	struct hostent *server;
 
-    struct Config config = get_config(argc, argv);
-    
-    // Init buffers
-    uint8_t *rbuffer = malloc(config.n_bytes);
-    uint8_t *wbuffer = malloc(config.n_bytes);
+	struct Config config = get_config(argc, argv);
 
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd < 0) {
-        error("ERROR opening socket");
-    }
-    server = gethostbyname(config.address);
-    if (server == NULL) {
-        fprintf(stderr,"ERROR, no such host\n");
-        exit(0);
-    }
-    bzero((char *) &serv_addr, sizeof(serv_addr));
-    serv_addr.sin_family = AF_INET;
-    bcopy((char *)server->h_addr, 
-         (char *)&serv_addr.sin_addr.s_addr,
-         server->h_length);
-    serv_addr.sin_port = htons(config.port);
+	// Init buffers
+	uint8_t *rbuffer = malloc(config.n_bytes);
+	uint8_t *wbuffer = malloc(config.n_bytes);
 
-    // Connect and set nonblocking and nodelay
-    if (connect(sockfd,(struct sockaddr *)&serv_addr,sizeof(serv_addr)) < 0) {
-        error("ERROR connecting");
-    }
-    fcntl(sockfd, F_SETFL, O_NONBLOCK);
-    int flag = 1;
-    setsockopt(sockfd, IPPROTO_TCP, TCP_NODELAY, (void *)&flag, sizeof(int));
+	sockfd = socket(AF_INET, SOCK_STREAM, 0);
+	if (sockfd < 0) {
+		error("ERROR opening socket");
+	}
+	server = gethostbyname(config.address);
+	if (server == NULL) {
+		fprintf(stderr,"ERROR, no such host\n");
+		exit(0);
+	}
+	bzero((char *) &serv_addr, sizeof(serv_addr));
+	serv_addr.sin_family = AF_INET;
+	bcopy((char *)server->h_addr, 
+			(char *)&serv_addr.sin_addr.s_addr,
+			server->h_length);
+	serv_addr.sin_port = htons(config.port);
 
-    printf("Connection successful! Starting...");
-    fflush( stdout );
+	// Connect and set nonblocking and nodelay
+	if (connect(sockfd,(struct sockaddr *)&serv_addr,sizeof(serv_addr)) < 0) {
+		error("ERROR connecting");
+	}
+	fcntl(sockfd, F_SETFL, O_NONBLOCK);
+	int flag = 1;
+	setsockopt(sockfd, IPPROTO_TCP, TCP_NODELAY, (void *)&flag, sizeof(int));
 
-    // Timed send-receive loop
-      double times_send;
-      double times_recv,tstart,tsend,tend,min_time;
-      double num = 3.2,num2=1000;
-      char buff[MAX];
-     int rounds = DATA/config.n_bytes; 
-    for (size_t i = 0; i < rounds; i++) {
-        tstart = rdtscp();
+	printf("Connection successful! Starting...");
+	fflush( stdout );
 
-        send_message(config.n_bytes, sockfd, wbuffer);
-        tsend = rdtsc();
- }
-  read(sockfd, buff, sizeof(buff));   
+	// Timed send-receive loop
+	double times_send;
+	double times_recv,tstart,tsend,tend,min_time;
+	double num = 3.2,num2=1000;
+	char buff[MAX];
+	int rounds = DATA/config.n_bytes; 
+	for (size_t i = 0; i < rounds; i++) {
+		tstart = rdtscp();
+
+		send_message(config.n_bytes, sockfd, wbuffer);
+		tsend = rdtsc();
+	}
+	read(sockfd, buff, sizeof(buff));   
 	tend = rdtsc();
 
-        times_send = tsend - tstart;
-        times_recv = tend - tsend;
+	times_send = tsend - tstart;
+	times_recv = tend - tsend;
 	min_time = times_send + times_recv;
-    close(sockfd);
-    printf("Done!\nSummary: (time_send,\ttime_recv)");
-    printf("Minimum cycles:\n");
-    printf("%f\n", min_time);
-    printf("Min time:\n");
- printf("%f\n", (min_time/num));
-printf("Min time:\n");
- printf("%f Mb/s\n", (config.n_bytes/(min_time/num))*num2); 
-    free(rbuffer);
-    free(wbuffer);
+	close(sockfd);
+	printf("Done!\nSummary: (time_send,\ttime_recv)");
+	printf("Minimum cycles:\n");
+	printf("%f\n", min_time);
+	printf("Min time:\n");
+	printf("%f\n", (min_time/num));
+	printf("Min time:\n");
+	printf("%f Mb/s\n", (config.n_bytes/(min_time/num))*num2); 
+	free(rbuffer);
+	free(wbuffer);
 
-    return 0;
+	return 0;
 }
 

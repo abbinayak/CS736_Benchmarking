@@ -26,7 +26,7 @@ int main(int argc, char** argv)
 		RDTSC(start);
 		getuid();
 		RDTSC(end);
-			/* Is this the new best? */
+		/* Is this the new best? */
 		uint diff = (end - start);
 		if(diff < best) best = diff;
 

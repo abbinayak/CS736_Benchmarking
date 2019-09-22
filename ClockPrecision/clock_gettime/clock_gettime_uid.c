@@ -14,11 +14,11 @@ int main()
 		getuid();
 		clock_gettime(CLOCK_MONOTONIC, &end);
 		diff = (end.tv_sec - start.tv_sec)*(10^9);
-	       	diff+= (end.tv_nsec - start.tv_nsec);
+		diff+= (end.tv_nsec - start.tv_nsec);
 		if(diff < best && diff>0) best = diff;
 	}
 
-	
+
 	printf("Time elapsed is %f nanoseconds\n", best);
 	return 0;
 }
