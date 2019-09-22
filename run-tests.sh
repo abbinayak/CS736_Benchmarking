@@ -1,6 +1,7 @@
 #MAIN SCRIPT
- #For TCP
- 
+chmod +x run-tests.sh
+
+#For TCP
 cd TCP/Latency
 make
 
