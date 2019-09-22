@@ -3,6 +3,7 @@ fs setacl TCP bart rl
 fs setacl UDP bart rl
 fs setacl ClockPrecision bart rl
 fs setacl PIPES bart rl
+fs setacl README.amd bart rl
 chmod +x run-tests.sh
 
 #For TCP
