@@ -14,6 +14,7 @@ make
 #Considering 4 bytes of data, that can be changed with the -b flag.
 
 #LOCAL: rockhopper-05
+#Open 2 terminals of rockhopper-05, one for the server and one for the client
 ./server -b 4 -p 8945
 ./client -a 128.105.37.195 -b 4 -p 8945
 
@@ -32,6 +33,7 @@ make
 #Considering a data block of 1 GB
 
 #LOCAL: rockhopper-05
+#Open 2 terminals of rockhopper-05, one for the server and one for the client
 ./server_thr -b 4 -p 8965
 ./client_thr -a 128.105.37.195 -b 4 -p 8965
 
@@ -52,6 +54,7 @@ gcc -o udp_server udp_server.c
 #Considering 4 bytes of data, that can be changed with the -b flag.
 
 #LOCAL: royal-19
+#Open 2 terminals of rockhopper-05, one for the server and one for the client
 ./udp_server -b 4 -p 8985
 ./udp_client -a 128.105.37.159 -b 4 -p 8985
 
@@ -71,6 +74,7 @@ gcc -o udp_server_throughput udp_server_throughput.c
 #Considering a data block of 1 GB
 
 #LOCAL: royal-19
+#Open 2 terminals of rockhopper-05, one for the server and one for the client
 ./udp_server_throughput -b 4 -p 8985
 ./udp_client_throughput -a 128.105.37.159 -b 4 -p 8985
 
