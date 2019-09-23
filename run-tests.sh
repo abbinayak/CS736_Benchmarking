@@ -14,12 +14,12 @@ make
 #Considering 4 bytes of data, that can be changed with the -b flag.
 
 #LOCAL: rockhopper-05
-./client -a 128.105.37.195 -b 4 -p 8945
 ./server -b 4 -p 8945
+./client -a 128.105.37.195 -b 4 -p 8945
 
 #REMOTE: client: rockhopper-03, server: rockhopper-06
-./client -a 128.105.37.196 -b 4 -p 8955
 ./server -b 4 -p 8955
+./client -a 128.105.37.196 -b 4 -p 8955
 
 cd ..
 
@@ -32,12 +32,12 @@ make
 #Considering a data block of 1 GB
 
 #LOCAL: rockhopper-05
-./client_thr -a 128.105.37.195 -b 4 -p 8965
 ./server_thr -b 4 -p 8965
+./client_thr -a 128.105.37.195 -b 4 -p 8965
 
 #REMOTE: client: rockhopper-03, server: rockhopper-06
-./client_thr -a 128.105.37.196 -b 4 -p 8975
 ./server_thr -b 4 -p 8975
+./client_thr -a 128.105.37.196 -b 4 -p 8975
 
 cd ../..
 
@@ -52,12 +52,12 @@ gcc -o udp_server udp_server.c
 #Considering 4 bytes of data, that can be changed with the -b flag.
 
 #LOCAL: royal-19
-./udp_client -a 128.105.37.159 -b 4 -p 8985
 ./udp_server -b 4 -p 8985
+./udp_client -a 128.105.37.159 -b 4 -p 8985
 
 #REMOTE: client: snares-02, server: snares-05
-./udp_client -a 128.105.37.225 -b 4 -p 8995
 ./udp_server -b 4 -p 8995
+./udp_client -a 128.105.37.225 -b 4 -p 8995
 
 cd ..
 
@@ -71,13 +71,12 @@ gcc -o udp_server_throughput udp_server_throughput.c
 #Considering a data block of 1 GB
 
 #LOCAL: royal-19
-./udp_client_throughput -a 128.105.37.159 -b 4 -p 8985
 ./udp_server_throughput -b 4 -p 8985
+./udp_client_throughput -a 128.105.37.159 -b 4 -p 8985
 
 #REMOTE: client: snares-02, server: snares-05
-./udp_client_throughput -a 128.105.37.225 -b 4 -p 8995
 ./udp_server_throughput -b 4 -p 8995
-
+./udp_client_throughput -a 128.105.37.225 -b 4 -p 8995
 
 #FOR PIPES
 cd ../..
