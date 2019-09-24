@@ -51,7 +51,7 @@ int main(int argc,char *argv[] ) {
 
 	int len, n, i; 
 	for (i = 0; i < N_ROUNDS; i++) {
-		printf("%d",i);
+	
 		n = recvfrom(sockfd, buffer, config.n_bytes,  
 				0, ( struct sockaddr *) &cliaddr, 
 				&len); 
