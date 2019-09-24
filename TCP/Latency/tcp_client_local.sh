@@ -1,7 +1,7 @@
 chmod +x tcp_client_local.sh
 #LATENCY TESTING FOR TCP LOCAL
 make
-#Usage: ./client_thr -a <IP-ADDRESS> -b <NUM OF BYTES> -p <PORT NUMBER>
+#Usage: ./client -a <IP-ADDRESS> -b <NUM OF BYTES> -p <PORT NUMBER>
 
 #Local: Running on rockhopper-05
 
