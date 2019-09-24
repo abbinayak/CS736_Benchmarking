@@ -85,7 +85,8 @@ int main(int argc, char *argv[]) {
 			min_time =times_send+times_recv;
 		}
 	}
-	close(sockfd);
+	if(close(sockfd)==-1)
+		error("ERROR closing socket");
 	printf("Done!\n");
 	printf("Minimum cycles: ");
 	printf("%f\n", min_time);
