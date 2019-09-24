@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 	printf("Connection accepted, ready to receive!\n");
 	int i;
 	for (i = 0; i < N_ROUNDS; i++) {
-		printf("%d",i);
+		//printf("%d",i);
 		receive_message(config.n_bytes, newsockfd, buffer);
 		send_message(config.n_bytes, newsockfd, buffer);
 	}
