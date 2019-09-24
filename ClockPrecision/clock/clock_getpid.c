@@ -2,13 +2,6 @@
 #include <time.h>
 #include <unistd.h>
 #define BILLION 1000000000
-/*void fun() 
-  { 
-  for(int i = 0;i<20;i++)
-  {
-  printf("Hi");
-  }
-  } */
 
 int main() 
 { 
