@@ -1,3 +1,5 @@
+chmod +x udp_client_local.sh
+
 gcc -o udp_client udp_client.c
 
 #Usage: ./udp_client -a <IP-ADDRESS> -b <NUM OF BYTES> -p <PORT NUMBER>
