@@ -1,4 +1,9 @@
-Instructions to run the scripts for TCP Local and Remote:
+# Latency Calculation:
+
+Latency was calculated by sending and receiving the message multiple times(around 1M iterations) and choosing the minimum latency from the results.
+
+# Instructions to run the scripts for TCP Local and Remote:
+
 Note: Always run the server script before the client script or else connection will be refused.
 
 For testing local connection, client is on rockhopper-05 and server is also in the same host.
