@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
-	printf("message size: %i octets\n", size);
+	printf("message size: %i bytes\n", size);
 	printf("roundtrip count: %li\n", count);
 
 	if (pipe(ofds) == -1) {
@@ -95,7 +95,7 @@ int main(int argc, char *argv[]) {
 				(stop.tv_nsec - start.tv_nsec));
 #endif
 
-		printf("average latency: %li ns\n", delta / (count * 2));
+		printf("Average Latency: %li ns\n", delta / (count * 2));
 	}
 
 	return 0;
