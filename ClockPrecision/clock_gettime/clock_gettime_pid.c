@@ -19,6 +19,6 @@ int main()
 	}
 
 
-	printf("Time elapsed is %f nanoseconds", best);
+	printf("Time elapsed by clock_gettime() to fetch getpid() is %f nanoseconds", best);
 	return 0;
 }
