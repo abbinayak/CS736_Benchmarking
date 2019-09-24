@@ -1,7 +1,7 @@
 # CS736_Benchmarking
 This repository contains the benchmarking code for CS736
 
-The script run_tests.sh should be run first to set the permissions for the above directories.
+The script permissions.sh should be run first to set the permissions for the above directories.
 
 TCP folder contains the code for TCP Latency and Throughput testing for client and server in both local and remote hosts.
 
