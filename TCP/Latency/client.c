@@ -57,7 +57,8 @@ int main(int argc, char *argv[]) {
 	}
 	fcntl(sockfd, F_SETFL, O_NONBLOCK);
 	int flag = 1;
-	setsockopt(sockfd, IPPROTO_TCP, TCP_NODELAY, (void *)&flag, sizeof(int));
+	if(setsockopt(sockfd, IPPROTO_TCP, TCP_NODELAY, (void *)&flag, sizeof(int))==-1)
+		error("ERROR setting socket");
 
 	printf("Connection successful! Starting...");
 	fflush( stdout );
@@ -79,7 +80,9 @@ int main(int argc, char *argv[]) {
 		times_send = tsend - tstart;
 		times_recv = tend - tsend;
 
-		if(times_send+times_recv<min_time){ min_time =times_send+times_recv;
+		if(times_send+times_recv<min_time)
+		{ 
+			min_time =times_send+times_recv;
 		}
 	}
 	close(sockfd);
