@@ -44,7 +44,8 @@ int main(int argc, char *argv[])
 	}
 	printf("Server ready, listening on port %d\n", config.port); 
 	fflush(stdout);
-	listen(sockfd, 5);
+	if(listen(sockfd, 5)==-1)
+		error("ERROR listening to socket");
 	socklen_t clilen = sizeof(cli_addr);
 
 	// Accept connection and set nonblocking and nodelay
@@ -69,13 +70,16 @@ int main(int argc, char *argv[])
 	{
 		strcpy(buff,"Acknowledge message");
 		// and send that buffer to client
-		write(newsockfd, buff, sizeof(buff));
+		if(write(newsockfd, buff, sizeof(buff))==-1)
+			error("ERROR writing to socket");
 	} 
 	printf("Done!\n");
 
 	// Clean state
-	close(sockfd);
-	close(newsockfd);
+	if(close(sockfd)==-1)
+		error("ERROR closing socket");
+	if(close(newsockfd)==-1)
+		error("ERROR closing new socket");
 
 	return 0; 
 }
