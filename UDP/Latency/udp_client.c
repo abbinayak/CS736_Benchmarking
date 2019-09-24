@@ -61,7 +61,7 @@ int main(int argc, char *argv[]) {
 	uint64_t min_send=10000000;
 	uint64_t min_recv=10000000;
 	for (size_t i = 0; i < N_ROUNDS; i++) {
-		printf("%ld",i);
+		
 		uint64_t tstart = rdtscp();
 
 		sendto(sockfd, buffer, config.n_bytes, 
