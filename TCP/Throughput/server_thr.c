@@ -1,6 +1,6 @@
 /*
  *  A server receiving and sending back a message multiple times.
- *  Usage: ./server.out -p <port> -n <message_size (bytes)>
+ *  Usage: ./server_thr -b <NUM OF BYTES> -p <PORT NUMBER>
  */
 #include <stdio.h>
 #include <netdb.h>
