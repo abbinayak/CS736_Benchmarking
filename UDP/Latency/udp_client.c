@@ -16,15 +16,10 @@
 
 #include "connection.h" 
 
-//#define PORT 8080 
-//#define MAXLINE 1024 
-
 // Driver code 
 int main(int argc, char *argv[]) { 
 	int sockfd; 
-	//char buffer[MAXLINE]; 
-	//char *hello = "Hello from client"; 
-	struct sockaddr_in     servaddr; 
+	struct sockaddr_in servaddr; 
 	struct hostent *server;
 
 	struct Config config = get_config(argc, argv);
@@ -55,11 +50,10 @@ int main(int argc, char *argv[]) {
 
 	int n, len; 
 	// Timed send-receive loop
-	uint64_t *times_send = malloc(sizeof(uint64_t) * N_ROUNDS);
-	uint64_t *times_recv = malloc(sizeof(uint64_t) * N_ROUNDS);
+	uint64_t *times_send = malloc(sizeof(uint64_t));
+	uint64_t *times_recv = malloc(sizeof(uint64_t));
 	uint64_t min_time=10000000;
-	uint64_t min_send=10000000;
-	uint64_t min_recv=10000000;
+	
 	for (size_t i = 0; i < N_ROUNDS; i++) {
 		
 		uint64_t tstart = rdtscp();
@@ -74,12 +68,12 @@ int main(int argc, char *argv[]) {
 				0, (struct sockaddr *) &servaddr, 
 				&len); 
 		uint64_t tend = rdtsc();
-		times_send[i] = tsend - tstart;
-		times_recv[i] = tend - tsend;
+		times_send = tsend - tstart;
+		times_recv = tend - tsend;
 
-		if(times_send[i]+times_recv[i]<min_time){ min_time =times_send[i]+times_recv[i];
-			min_send = times_send[i];
-			min_recv = times_recv[i];}
+		if(times_send + times_recv <min_time){ 
+			min_time =times_send +times_recv;
+		}
 	}
 
 	buffer[n] = '\0'; 
