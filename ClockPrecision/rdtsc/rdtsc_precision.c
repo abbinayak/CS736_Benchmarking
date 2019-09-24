@@ -26,7 +26,7 @@ int main(int argc, char** argv)
 		RDTSC(start);
 		for(int j = 0; j<3; j++){}
 		RDTSC(end);
-		/* Is this the new best? */
+	
 		uint diff = (end - start);
 		if(diff < best) best = diff;
 
