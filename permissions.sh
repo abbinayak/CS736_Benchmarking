@@ -1,5 +1,5 @@
 #MAIN SCRIPT
-chmod +x run-tests.sh
+chmod +x permissions.sh
 
 #Set permissions
 fs setacl TCP/Latency bart rlidw
