@@ -1,4 +1,5 @@
 #THROUGHPUT TESTING FOR PIPE
+chmod +x pipe_thr.sh
 gcc pipe_thr.c -o pipe_thr
 
 #Running on royal-10
