@@ -1,4 +1,4 @@
-chmod +x run_tcp.sh
+chmod +x tcp_server_local.sh
 #LATENCY TESTING FOR TCP LOCAL AND REMOTE
 make
 #Remote: Running on rockhopper-05 and rockhopper-06
