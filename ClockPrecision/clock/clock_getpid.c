@@ -32,6 +32,6 @@ int main()
 		double time_taken = (double)(end - start) / (double)(CLOCKS_PER_SEC);  
 		if(time_taken < best) best = time_taken;
 	}
-	printf("Time taken by program is : %f nanoseconds\n", best*BILLION) ;  
+	printf("Time taken by program to fetch getpid() is : %f nanoseconds\n", best*BILLION) ;  
 	return 0;
 } 
