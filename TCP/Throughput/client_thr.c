@@ -57,7 +57,8 @@ int main(int argc, char *argv[]) {
 	}
 	fcntl(sockfd, F_SETFL, O_NONBLOCK);
 	int flag = 1;
-	setsockopt(sockfd, IPPROTO_TCP, TCP_NODELAY, (void *)&flag, sizeof(int));
+	if(setsockopt(sockfd, IPPROTO_TCP, TCP_NODELAY, (void *)&flag, sizeof(int))==-1)
+		error("ERROR setting socket");
 
 	printf("Connection successful! Starting...");
 	fflush( stdout );
