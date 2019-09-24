@@ -54,7 +54,8 @@ int main(int argc, char *argv[])
 	}
 	fcntl(newsockfd, F_SETFL, O_NONBLOCK);
 	int flag = 1;
-	setsockopt(newsockfd, IPPROTO_TCP, TCP_NODELAY, (void *)&flag, sizeof(int));
+	if(setsockopt(newsockfd, IPPROTO_TCP, TCP_NODELAY, (void *)&flag, sizeof(int))==-1)
+		error("ERROR setting socket");
 
 	// Receive-send loop
 	printf("Connection accepted, ready to receive!\n");
