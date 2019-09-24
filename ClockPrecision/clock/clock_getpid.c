@@ -16,11 +16,17 @@ int main()
 	{
 		/* Recording the starting clock tick.*/
 		start = clock(); 
-
+		if(start==-1){
+			perror("Clock error on start");
+			exit(1);
+		}
 		getpid();
 		// Recording the end clock tick. 
 		end = clock(); 
-
+		if(end==-1){
+			perror("Clock error on end");
+			exit(1);
+		}
 		// Calculating total time taken by the program. 
 		double time_taken = (double)(end - start) / (double)(CLOCKS_PER_SEC);  
 		if(time_taken < best) best = time_taken;
