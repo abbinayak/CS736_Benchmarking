@@ -1,3 +1,4 @@
+chmod +x tcp_client_remote.sh
 make
 #Usage: ./client_thr -a <IP-ADDRESS> -b <NUM OF BYTES> -p <PORT NUMBER>
 
