@@ -1,7 +1,7 @@
 chmod +x tcp_client_remote.sh
 #LATENCY TESTING FOR TCP REMOTE
 make
-#Usage: ./client_thr -a <IP-ADDRESS> -b <NUM OF BYTES> -p <PORT NUMBER>
+#Usage: ./client -a <IP-ADDRESS> -b <NUM OF BYTES> -p <PORT NUMBER>
 
 #Remote: Running on rockhopper-05 and rockhopper-06
 #Client: rockhopper-05 and Server rockhopper-06
