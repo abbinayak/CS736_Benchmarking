@@ -17,6 +17,6 @@ int main()
 	}
 
 
-	printf("Time elapsed is %f nanoseconds", best);
+	printf("Time taken by clock_gettime() is %f nanoseconds", best);
 	return 0;
 }
