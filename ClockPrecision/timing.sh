@@ -1,8 +1,5 @@
 #TIMING
 chmod +x timing.sh
-fs setacl clock bart rl
-fs setacl clock_gettime bart rl
-fs setacl rdtsc bart rl
 
 #FOR CLOCK
 cd clock
