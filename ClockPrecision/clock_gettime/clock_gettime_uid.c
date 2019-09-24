@@ -2,7 +2,6 @@
 #include <time.h>
 #include <unistd.h>
 
-
 int main()
 {
 	struct timespec start,end;
