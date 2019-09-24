@@ -33,6 +33,6 @@ int main()
 		double time_taken = (double)(end - start) / (double)(CLOCKS_PER_SEC);  
 		if(time_taken < best) best = time_taken;
 	}
-	printf("Time taken by the program to fetch getuid() is : %f nanoseconds\n", best*BILLION) ;  
+	printf("Time taken by clock() to fetch getuid() is : %f nanoseconds\n", best*BILLION) ;  
 	return 0;
 } 
