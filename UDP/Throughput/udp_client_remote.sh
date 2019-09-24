@@ -1,3 +1,5 @@
+chmod +x udp_client_remote.sh
+
 gcc -o udp_client_throughput udp_client_throughput.c
 
 #Usage: ./udp_client_throughput -a <IP-ADDRESS> -b <NUM OF BYTES> -p <PORT NUMBER>
