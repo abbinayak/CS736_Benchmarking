@@ -74,13 +74,15 @@ int main(int argc, char *argv[]) {
 		send_message(config.n_bytes, sockfd, wbuffer);
 		tsend = rdtsc();
 	}
-	read(sockfd, buff, sizeof(buff));   
+	if(read(sockfd, buff, sizeof(buff))==-1)
+		error("ERROR reading from socket");   
 	tend = rdtsc();
 
 	times_send = tsend - tstart;
 	times_recv = tend - tsend;
 	min_time = times_send + times_recv;
-	close(sockfd);
+	if(close(sockfd)==-1)
+		error("ERROR closing socket");
 	printf("Done!\n");
 	printf("Cycles:\n");
 	printf("%f\n", min_time);
