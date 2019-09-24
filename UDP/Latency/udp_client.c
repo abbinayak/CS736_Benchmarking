@@ -77,12 +77,12 @@ int main(int argc, char *argv[]) {
 	}
 
 	buffer[n] = '\0'; 
-	//printf("Server : %s\n", buffer); 
-
-	close(sockfd); 
+	if(close(sockfd)==-1)
+		error("ERROR closing socket"); 
 
 	printf("Minimum cycles:\n");
 	printf("(%" PRIu64 ")\n", min_time);
+	printf("Min time : %f\n", (min_time/3.2)/2);
 	free(times_send);
 	free(times_recv);
 	free(buffer);
