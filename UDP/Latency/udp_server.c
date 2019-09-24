@@ -13,16 +13,13 @@
 
 #include "connection.h"
 
-//#define PORT     8080 
-//#define MAXLINE 1024 
-
 // Driver code 
 int main(int argc,char *argv[] ) { 
 	int sockfd; 
 	struct Config config = get_config(argc, argv);
 	char *buffer = malloc(config.n_bytes);
-	//char buffer[MAXLINE]; 
-	//char *hello = "Hello from server"; 
+	if(buffer==NULL)
+		error("ERROR allocating memory");
 	struct sockaddr_in servaddr, cliaddr; 
 
 	// Creating socket file descriptor 
