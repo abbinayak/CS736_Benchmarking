@@ -1,3 +1,5 @@
+chmod +x udp_server_remote.sh
+
 gcc -o udp_server udp_server.c
 
 #Usage: ./udp_server -b <<NUM OF BYTES> -p <PORT NUMBER>
