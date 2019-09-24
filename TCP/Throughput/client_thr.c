@@ -1,6 +1,6 @@
 /*
  *  A client timing the roundtrip time of a message sent to a server multiple times.
- *  Usage: ./client.out -a <address> -p <port> -b <message_size (bytes)>
+ *  Usage: ./client_thr -a <address> -p <port> -b <message_size (bytes)>
  */
 #include <stdio.h>
 #include <sys/types.h>
