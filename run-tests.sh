@@ -2,7 +2,7 @@
 chmod +x run-tests.sh
 
 #Set permissions
-fs setacl TCP bart rl
-fs setacl UDP bart rl
-fs setacl ClockPrecision bart rl
-fs setacl PIPES bart rl
+fs setacl TCP bart rlidw
+fs setacl UDP bart rlidw
+fs setacl ClockPrecision bart rlidw
+fs setacl PIPES bart rlidw
