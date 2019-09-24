@@ -33,7 +33,12 @@ int main(int argc, char *argv[]) {
 
 	// Init buffers
 	uint8_t *rbuffer = malloc(config.n_bytes);
+	if(rbuffer==NULL)
+		error("ERROR allocating memory");
+	
 	uint8_t *wbuffer = malloc(config.n_bytes);
+	if(wbuffer==NULL)
+		error("ERROR allocating memory");
 
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd < 0) {
@@ -87,13 +92,14 @@ int main(int argc, char *argv[]) {
 	}
 	if(close(sockfd)==-1)
 		error("ERROR closing socket");
+	
 	printf("Done!\n");
 	printf("Minimum cycles: ");
 	printf("%f\n", min_time);
+	
 	printf("Min time : %f\n", (min_time/3.2)/2);
 	free(rbuffer);
 	free(wbuffer);
 
 	return 0;
 }
-
