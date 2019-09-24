@@ -1,4 +1,4 @@
-.PHONY: client server clean all local
+.PHONY: client_thr server_thr clean all local
 
 CC=gcc
 CFLAGS=-I. -O3 -Wall -pedantic -g
@@ -8,18 +8,18 @@ PORT=12345
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-all: client server
+all: client_thr server_thr
 
-client: client.o
+client_thr: client_thr.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
-server: server.o
+server_thr: server_thr.o
 	$(CC) -o $@ $^ $(CFLAGS)
 
 clean:
-	rm -f *.o client server
+	rm -f *.o client_thr server_thr
 
-local: client server
-	./server $(PORT) &
-	./client localhost $(PORT)
+local: client_thr server_thr
+	./server_thr $(PORT) &
+	./client_thr localhost $(PORT)
 
