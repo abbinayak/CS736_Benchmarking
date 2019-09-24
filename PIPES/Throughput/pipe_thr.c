@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 	count = DATA/size;
-	printf("message size: %i octets\n", size);
+	printf("message size: %i bytes\n", size);
 	printf("message count: %li\n", count);
 
 	if (pipe(ofds) == -1) {
