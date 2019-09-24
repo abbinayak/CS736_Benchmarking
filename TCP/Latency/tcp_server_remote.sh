@@ -1,9 +1,13 @@
 chmod +x tcp_server_remote.sh
 #LATENCY TESTING FOR TCP REMOTE
 make
+
+#Usage: ./server -b <NUM OF BYTES> -p <PORT NUMBER>
+
 #Remote: Running on rockhopper-05 and rockhopper-06
 #Client: rockhopper-05 and Server rockhopper-06
-#The below commands are for 4 bytes
+
+#The below command considers 4 bytes message size
 #The message size to be tested can be specified by changing the argument for -b
 
 ./server -p 9005 -b 4
