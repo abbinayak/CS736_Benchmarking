@@ -13,4 +13,5 @@ fs setacl ClockPrecision/clock bart rlidw
 fs setacl ClockPrecision/clock_gettime bart rlidw
 fs setacl ClockPrecision/rdtsc bart rlidw
 
-fs setacl PIPES bart rlidw
+fs setacl PIPES/Latency bart rlidw
+fs setacl PIPES/Throughput bart rlidw
