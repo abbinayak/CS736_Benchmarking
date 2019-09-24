@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
 	char buff[MAX];
 	int no_of_rounds = DATA_BLOCK/config.n_bytes;
 	for (size_t i = 0; i < no_of_rounds; i++) {
-		//printf("%ld",i);
+	
 		tstart = rdtscp();
 
 		sendto(sockfd, buffer, config.n_bytes, 
