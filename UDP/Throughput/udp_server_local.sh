@@ -1,4 +1,4 @@
-chmod +x udp_client_remote.sh
+chmod +x udp_server_local.sh
 
 gcc -o udp_server_throughput udp_server_throughput.c
 
