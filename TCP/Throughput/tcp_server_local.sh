@@ -1,3 +1,4 @@
+chmod +x tcp_server_local.sh
 make
 #Usage: ./server_thr -b <NUM OF BYTES> -p <PORT NUMBER>
 
