@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
 	int sockfd, newsockfd;
 	struct Config config = get_config(argc, argv);
 	uint8_t *buffer = malloc(config.n_bytes);
+	if(buffer==NULL)
+		error("ERROR allocating memory");
 	struct sockaddr_in serv_addr, cli_addr;
 
 	// Create listening socket
