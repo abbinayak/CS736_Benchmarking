@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 
 	}
 
-	printf("best run  : %u\n", best);
+	printf("Cycles taken by rdtsc() : %u\n", best);
 	return 0;
 }	
 
