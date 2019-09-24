@@ -19,6 +19,6 @@ int main()
 	}
 
 
-	printf("Time elapsed is %f nanoseconds\n", best);
+	printf("Time taken by clock_gettime() to fetch getuid() is %f nanoseconds\n", best);
 	return 0;
 }
