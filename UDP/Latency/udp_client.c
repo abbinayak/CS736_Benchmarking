@@ -26,7 +26,8 @@ int main(int argc, char *argv[]) {
 
 	// Init buffers
 	char *buffer = malloc(config.n_bytes);
-
+	if(buffer==NULL)
+		error("ERROR allocating memory");
 	// Creating socket file descriptor 
 	if ( (sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0 ) { 
 		perror("socket creation failed"); 
