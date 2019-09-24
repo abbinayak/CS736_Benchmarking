@@ -83,7 +83,7 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	close(sockfd);
-	printf("Done!\nSummary: (time_send,\ttime_recv)");
+	printf("Done!\n");
 	printf("Minimum cycles: ");
 	printf("%f\n", min_time);
 	printf("Min time : %f\n", (min_time/3.2)/2);
