@@ -25,8 +25,8 @@ int main(int argc, char *argv[]) {
 	int sockfd; 
 	struct Config config = get_config(argc, argv);
 	char *buffer = malloc(config.n_bytes);
-	//char buffer[MAXLINE]; 
-	//char *hello = "Hello from server"; 
+	if(buffer==NULL)
+		error("ERROR allocating memory");
 	struct sockaddr_in servaddr, cliaddr; 
 
 	// Creating socket file descriptor 
@@ -61,8 +61,7 @@ int main(int argc, char *argv[]) {
 		n = recvfrom(sockfd, buffer, config.n_bytes,  
 				0, ( struct sockaddr *) &cliaddr, 
 				&len); 
-		buffer[n] = '\0'; 
-		//printf("Client : %s\n", buffer); 
+		buffer[n] = '\0';  
 		sendto(sockfd, buffer, config.n_bytes,  
 				0, (const struct sockaddr *) &cliaddr, 
 				len); 
@@ -70,11 +69,13 @@ int main(int argc, char *argv[]) {
 	if(i==no_of_rounds)
 	{
 		strcpy(buff,"Acknowledge message");
-		write(sockfd, buff, sizeof(buff));
+		if(write(sockfd, buff, sizeof(buff))==-1)
+			error("Error writing to socket");
 	} 
 
 	printf("Done!\n");  
-	close(sockfd);
+	if(close(sockfd)==-1)
+		error("Error closing socket");
 
 
 
