@@ -1,7 +1,7 @@
 Instructions to run the scripts for PIPES:
 
-For testing latency, client is on rockhopper-05 and server is also in the same host.
+For testing latency, the terminal used was royal-10.
 Please run pipe_lat.sh
 
-For testing throughput, client is on rockhopper-05 and server is also in the same host.
+For testing throughput, the terminal used was royal-10.
 Please run pipe_thr.sh
