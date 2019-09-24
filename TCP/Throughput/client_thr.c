@@ -65,7 +65,6 @@ int main(int argc, char *argv[]) {
 	// Timed send-receive loop
 	double times_send;
 	double times_recv,tstart,tsend,tend,min_time;
-	double num = 3.2,num2=1000;
 	char buff[MAX];
 	int rounds = DATA/config.n_bytes; 
 	for (size_t i = 0; i < rounds; i++) {
@@ -81,13 +80,13 @@ int main(int argc, char *argv[]) {
 	times_recv = tend - tsend;
 	min_time = times_send + times_recv;
 	close(sockfd);
-	printf("Done!\nSummary: (time_send,\ttime_recv)");
-	printf("Minimum cycles:\n");
+	printf("Done!\n");
+	printf("Cycles:\n");
 	printf("%f\n", min_time);
-	printf("Min time:\n");
-	printf("%f\n", (min_time/num));
-	printf("Min time:\n");
-	printf("%f Mb/s\n", (config.n_bytes/(min_time/num))*num2); 
+	printf("Time:\n");
+	printf("%f\n", (min_time/3.2));
+	printf("Throughput:\n");
+	printf("%f Mb/s\n", (config.n_bytes/(min_time/num))*1000); 
 	free(rbuffer);
 	free(wbuffer);
 
