@@ -26,15 +26,15 @@ void error(char *msg)
 // Driver code 
 int main(int argc, char *argv[]) { 
 	int sockfd; 
-	//char buffer[MAXLINE]; 
-	//char *hello = "Hello from client"; 
-	struct sockaddr_in     servaddr; 
+	struct sockaddr_in servaddr; 
 	struct hostent *server;
 
 	struct Config config = get_config(argc, argv);
 
 	// Init buffers
 	char *buffer = malloc(config.n_bytes);
+	if(buffer==NULL)
+		error("Error allocating memory");
 
 	// Creating socket file descriptor 
 	if ( (sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0 ) { 
@@ -74,18 +74,18 @@ int main(int argc, char *argv[]) {
 				sizeof(servaddr)); 
 		tsend = rdtsc();
 
-		//printf("Hello message sent.\n");
 	}
-	read(sockfd, buff, sizeof(buff)); 
+	if(read(sockfd, buff, sizeof(buff))==-1)
+		error("Error reading from socket"); 
 	tend = rdtsc();
 
 	buffer[n] = '\0'; 
-	//printf("Server : %s\n", buffer);
 
 	times_send = tsend - tstart;
 	times_recv = tend - tsend;
 	min_time = times_send + times_recv;
-	close(sockfd);
+	if(close(sockfd)==-1)
+		error("Error closing socket");
 
 	printf("Minimum cycles:\n");
 	printf("%f\n", min_time);
